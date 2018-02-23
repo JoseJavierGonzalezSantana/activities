@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Activity 3: Forms &amp; click event</title>
+    <style type="text/css">
+      #boton02{
+        background-color: red;
+        padding: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Activity 3: Forms &amp; click event</h1>
+    <p>Add a form with two fields ("Rows" and "Columns") and a button ("Generate Table"). When the button is clicked it have to:</p>
+      <ol>
+        <li>remove a table#generated if exists </li>
+        <li>Add a table with as many rows and columns both Rows and Columns fields indicate</li>
+        <li>Each table cell must contain a text like: "Row: X, Col: Y"</li>
+      </ol>
+      <form name="createTable" method="post" action="">  
+  <table style="border: 1px solid black;" border="0" cellpadding="10">
+    <tr>
+    <td> Rows: </td> <td> <input id="rows" type="number" name="rows" value="0" min="0" size="12" required></td>
+    </tr>
+    <tr>
+    <td> Columns: </td> <td> <input id="columns" type="number" name="columns" value="0" size="12"></td>
+    </tr>
+    <tr>
+    <td colspan="2" align="center">
+     <input type="button" value="Genera una tabla" onclick="genera_tabla()">
+  </table>
+  
+  </form>
+  
+  
+      <div id="generated"></div>
+
+  </body>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"  crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+
+function genera_tabla() {
+  if ($("#generated").length) {
+    $("#generated").remove();
+  }
+    $("body").append("<div id='generated'></div>");
+var rows=$('#rows').val();
+var columns=$('#columns').val();
+var table="";
+  table+="<table border='1'>";
+     table+="<thead>";
+     table+="</thead>";
+     table+="<tbody>";
+       for (var r=0; r <rows ; r++) {
+        table+="<tr>";
+      for (var c=0; c <columns ; c++) {
+        table+="<td>Row:"+r+"Col:"+c+"</td>";
+    }
+        table+="<tr>";
+  } 
+        table+="</tbody>";
+        table+="</table>";
+$('#generated').append(table);
+ 
+
+}
+</script>
+
+
+</html>
